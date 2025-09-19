@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tortoise/src/screens/home/home_screen.dart';
+import 'package:tortoise/src/routes/router.dart';
 import 'package:tortoise/src/theme/app_theme.dart';
 
 void main() {
@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'Tortoise',
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      // Use named routing with page transitions
+      initialRoute: RouteNameEnum.home.path,
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }

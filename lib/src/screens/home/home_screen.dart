@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tortoise/src/routes/router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,32 +12,18 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.white,
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.home,
-              size: 64,
-              color: Colors.blue,
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Welcome to Tortoise',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Simple white theme with blue primary color',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-          ],
+      body: Center(
+        child: MaterialButton(
+          height: 50,
+          minWidth: 200,
+          color: Theme.of(context).primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, RouteNameEnum.search.path);
+          },
+          child: const Text('Search', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
