@@ -8,6 +8,8 @@ class SvgIconButton extends StatelessWidget {
   final Color? iconColor;
   final double? height;
   final double? width;
+  final double? iconHeight;
+  final double? iconWidth;
   final double? borderRadius;
   const SvgIconButton({
     super.key,
@@ -17,6 +19,8 @@ class SvgIconButton extends StatelessWidget {
     this.iconColor = const Color(0xffFFFFFF),
     this.height = 24,
     this.width = 24,
+    this.iconHeight = 18,
+    this.iconWidth = 18,
     this.borderRadius = 50,
   });
 
@@ -34,6 +38,8 @@ class SvgIconButton extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             icon,
+            height: iconHeight,
+            width: iconWidth,
             colorFilter: ColorFilter.mode(
               iconColor ?? Colors.white,
               BlendMode.srcIn,

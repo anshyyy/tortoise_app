@@ -18,6 +18,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.1
   page_transition: ^2.2.1
+  textfield_tags: ^3.0.1
 
 dev_dependencies:
   flutter_test:

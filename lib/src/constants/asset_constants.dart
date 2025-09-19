@@ -11,6 +11,7 @@ class AssetConstants {
 
   // Vector assets
   static const String caretLeftIcon = '${_vectorFolder}caret-left.svg';
+  static const String searchIcon = '${_vectorFolder}search.svg';
 
   // Image assets - Device images
   static const String ipadPro = '${_imageFolder}ipad_pro.png';
