@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 import 'package:tortoise/src/constants/asset_constants.dart';
+import 'package:tortoise/src/data/company_data.dart';
 import 'package:tortoise/src/widgets/app_bar/k_app_bar.dart';
+import 'package:tortoise/src/widgets/buttons/company_button.dart';
 import 'package:tortoise/src/widgets/buttons/svg_icon_button.dart';
 import 'package:tortoise/src/widgets/textfields/k_text_field_tags.dart';
 
@@ -15,6 +17,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   late StringTagController _controller;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -30,11 +33,16 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Scaffold(
+      backgroundColor: colorScheme.secondary,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Custom app bar with back button
           KAppBar(
+            //  height: 130,
             elevation: 1,
             leading: SvgIconButton(
               icon: AssetConstants.caretLeftIcon,
@@ -42,25 +50,79 @@ class _SearchScreenState extends State<SearchScreen> {
                 Navigator.pop(context);
               },
             ),
-            child: const Text(
-              'Search',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
+
+            child: Padding(
+              padding: EdgeInsets.only(right: 24),
+              child: KTextFieldTags(
+                backgroundColor: colorScheme.secondaryContainer.withValues(
+                  alpha: 0.05,
+                ),
+                width: 326,
+                height: 54,
+                borderColor: colorScheme.scrim,
+                borderWidth: 1,
+                tagDisplayMode: TagDisplayMode.horizontal,
+                prefixIconPath: AssetConstants.searchIcon,
+                tagBorderRadius: 8,
+                tagBackgroundColor: colorScheme.primary,
+                tagRemoveIconColor: colorScheme.scrim,
+                tagTextColor: colorScheme.scrim,
+
+                prefixIconColor: colorScheme.scrim,
+                controller: _controller,
+                initialTags: [],
+                tagPrefix: '',
+                textSeparators: const [' ', ','],
+                validator: (tag) {
+                  return null;
+                },
+                onTagAdded: (tag) {},
+                onTagDeleted: (tag) {},
               ),
             ),
           ),
-          KTextFieldTags(
-            height: 50,
-            width: double.infinity,
-            controller: _controller,
-            initialTags: ['Apple', 'Samsung', 'Google'],
-            textSeparators: const [' ', ','],
-            validator: (tag) {
-              print(tag);
-              return null;
-            },
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Search from popular brands',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: colorScheme.scrim,
+                  ),
+                ),
+                SizedBox(height: 24),
+                SizedBox(
+                  height: 80,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+
+                    itemCount: CompanyData.companyData.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(right: 16),
+
+                        child: CompanyButton(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = index;
+                            });
+                          },
+                          image: CompanyData.companyData[index].image,
+                          title: CompanyData.companyData[index].name,
+                          isSelected: index == _selectedIndex,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

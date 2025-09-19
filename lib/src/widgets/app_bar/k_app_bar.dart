@@ -11,65 +11,61 @@ class KAppBar extends StatelessWidget {
   final EdgeInsets? padding;
   final EdgeInsets? leadingPadding;
   final Widget? child;
+  final List<BoxShadow>? customShadow;
+  final bool useCustomShadow;
+  final double? leadingWidth;
+  final double titleSpacing;
 
   const KAppBar({
     super.key,
     this.title,
     this.leading,
-    this.height = 114,
+    this.height = 66,
     this.backgroundColor = Colors.white,
-    this.elevation = 0,
+    this.elevation = 1,
     this.centerTitle = true,
     this.padding,
     this.leadingPadding,
     this.child,
+    this.customShadow,
+    this.useCustomShadow = true,
+    this.leadingWidth,
+    this.titleSpacing = 0,
   });
 
   @override
   Widget build(BuildContext context) {
+    // Default shadow configuration
+    final defaultShadow = [
+      BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 2),
+    ];
+
     return Container(
-      // Add top padding to handle device notches and status bar
-      padding:
-          padding ??
-          EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top,
-            left: 24,
-            right: 24,
-            bottom: 0,
-          ),
-      height: height,
       decoration: BoxDecoration(
         color: backgroundColor,
-        boxShadow: elevation > 0
-            ? [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
-                  blurRadius: 2,
-                ),
-              ]
-            : [],
+        boxShadow: useCustomShadow ? (customShadow ?? defaultShadow) : null,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Leading widget with fixed width to maintain consistent spacing
-          SizedBox(
-            child: Padding(
-              padding: leadingPadding ?? const EdgeInsets.only(right: 24),
-              child: leading ?? const SizedBox.shrink(),
-            ),
-          ),
-
-          // Title section with proper centering logic
-          // if child is provided, it will be placed in the center
-          if (child != null) Center(child: child),
-          // if child is not provided, it will be placed in the center
-          if (child == null && title != null)
-            Expanded(child: centerTitle ? Center(child: title!) : title!),
-
-          // Spacer to balance the leading widget when centering
-          if (centerTitle && leading != null) const SizedBox(width: 48),
-        ],
+      child: AppBar(
+        title: title,
+        leading: leading != null
+            ? Container(
+                padding: leadingPadding,
+                alignment: Alignment.center,
+                child: leading,
+              )
+            : null,
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0, // Remove AppBar's own elevation
+        centerTitle: centerTitle,
+        toolbarHeight: height,
+        actions: [if (child != null) child!],
+        actionsPadding: padding,
+        // Remove gaps between leading, title, and actions
+        leadingWidth: leadingWidth ?? (leading != null ? null : 0),
+        titleSpacing: titleSpacing, // Remove gap between leading and title
+        actionsIconTheme: const IconThemeData(size: 0), // Remove default icon spacing
+        automaticallyImplyLeading: false, // Prevent default back button spacing
       ),
     );
   }

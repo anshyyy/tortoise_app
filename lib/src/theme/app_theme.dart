@@ -10,6 +10,8 @@ class AppTheme {
   static const Color shippingBackgroundColor = Color(0xfff4f4ea);
   static const Color shippingTextColor = Color(0xff946120);
   static const Color textColor = Colors.black;
+  static const Color whiteColor = Color(0xffffffff);
+  static const Color grayColor = Color(0xff191919);
 
   static ThemeData get theme {
     return ThemeData(
@@ -19,6 +21,14 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: primaryColor,
         brightness: Brightness.light,
+        primary: whiteColor,
+        secondary: accentColor,
+        secondaryContainer: grayColor,
+        tertiary: containerColor,
+        surface: shippingBackgroundColor,
+        surfaceTint: shippingTextColor,
+        onSurface: shippingTextColor,
+        scrim: textColor,
       ),
     );
   }
