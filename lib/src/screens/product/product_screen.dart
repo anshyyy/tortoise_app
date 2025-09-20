@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:tortoise/src/constants/app_colors.dart';
 import 'package:tortoise/src/constants/asset_constants.dart';
 import 'package:tortoise/src/models/product_data_model.dart';
+import 'package:tortoise/src/screens/product/effective_price_sheet.dart';
 import 'package:tortoise/src/widgets/app_bar/k_app_bar.dart';
 import 'package:tortoise/src/widgets/bottom_nav/bottom_nav.dart';
 import 'package:tortoise/src/widgets/buttons/svg_icon_button.dart';
@@ -35,7 +36,16 @@ class _ProductScreenState extends State<ProductScreen> {
         effectivePrice: widget.product.effectivePrice,
         monthlyDeduction: widget.product.monthlyDeduction,
         onAddToCart: () {},
-        onEffectivePrice: () {},
+        onEffectivePrice: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => EffectivePriceSheet(
+              taxSlab : '30',
+              effectivePrice : widget.product.effectivePrice,
+              monthlyDeduction : widget.product.monthlyDeduction,
+            ),
+          );
+        },
       ),
       backgroundColor: AppColors.gray500,
       appBar: KAppBar(

@@ -19,6 +19,7 @@ class AssetConstants {
   static const String caretDownIcon = '${_vectorFolder}caret_circle_down.svg';
   static const String caretUpIcon = '${_vectorFolder}caret_circle_up.svg';
   static const String caretRightIcon = '${_vectorFolder}caret_circle_right.svg';
+  static const String downArrowIcon = '${_vectorFolder}down_arrow.svg';
 
 
   // Image assets - Device images
