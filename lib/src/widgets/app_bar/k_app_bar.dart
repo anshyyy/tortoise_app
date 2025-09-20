@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Custom AppBar widget that provides proper title centering and notch handling
-class KAppBar extends StatelessWidget {
+class KAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Text? title;
   final Widget? leading;
   final double height;
@@ -69,4 +69,7 @@ class KAppBar extends StatelessWidget {
       ),
     );
   }
+  
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }

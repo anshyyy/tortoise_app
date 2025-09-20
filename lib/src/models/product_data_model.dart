@@ -1,10 +1,14 @@
+import 'color_variant_model.dart';
+
 class ProductDataModel {
   final String id;
   final String name;
-  final String image;
+  final String image; // Primary image - kept for backward compatibility and main display
   final String companyId; // Links product to company
   final String category; // e.g., 'Phone', 'Laptop', 'Tablet'
-  final double price; // Product price
+  final double price; // Base product price
+  final List<ColorVariantModel> colorVariants; // Different color options with their images
+  final List<String> sizes; // Different sizes options with their images
 
   ProductDataModel({
     required this.id, 
@@ -13,6 +17,8 @@ class ProductDataModel {
     required this.companyId,
     required this.category,
     required this.price,
+    this.colorVariants = const [], // Default to empty list
+    this.sizes = const [], // Default to empty list
   });
 
   /// Create ProductDataModel from JSON (typically from API response)
@@ -24,6 +30,16 @@ class ProductDataModel {
       companyId: json['company_id'] as String,
       category: json['category'] as String,
       price: (json['price'] as num).toDouble(),
+      colorVariants: json['color_variants'] != null
+          ? (json['color_variants'] as List)
+              .map((variant) => ColorVariantModel.fromJson(variant as Map<String, dynamic>))
+              .toList()
+          : [],
+      sizes: json['sizes'] != null
+          ? (json['sizes'] as List)
+              .map((size) => size as String)
+              .toList()
+          : [],
     );
   }
 
@@ -36,6 +52,8 @@ class ProductDataModel {
       'company_id': companyId,
       'category': category,
       'price': price,
+      'color_variants': colorVariants.map((variant) => variant.toJson()).toList(),
+      'sizes': sizes,
     };
   }
 
@@ -47,6 +65,8 @@ class ProductDataModel {
     String? companyId,
     String? category,
     double? price,
+    List<ColorVariantModel>? colorVariants,
+    List<String>? sizes,
   }) {
     return ProductDataModel(
       id: id ?? this.id,
@@ -55,6 +75,8 @@ class ProductDataModel {
       companyId: companyId ?? this.companyId,
       category: category ?? this.category,
       price: price ?? this.price,
+      colorVariants: colorVariants ?? this.colorVariants,
+      sizes: sizes ?? this.sizes,
     );
   }
 
@@ -72,11 +94,13 @@ class ProductDataModel {
         other.image == image &&
         other.companyId == companyId &&
         other.category == category &&
-        other.price == price;
+        other.price == price &&
+        other.colorVariants.length == colorVariants.length &&
+        other.sizes.length == sizes.length;
   }
 
   @override
   int get hashCode {
-    return Object.hash(id, name, image, companyId, category, price);
+    return Object.hash(id, name, image, companyId, category, price, colorVariants.length, sizes.length);
   }
 }
