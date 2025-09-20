@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tortoise/src/constants/app_colors.dart';
 import 'inner_shadow_decoration.dart';
 
 class CompanyButton extends StatelessWidget {
@@ -18,7 +19,6 @@ class CompanyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return GestureDetector(
       onTap: onTap,
@@ -27,7 +27,7 @@ class CompanyButton extends StatelessWidget {
         width: 76,
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         decoration: BoxDecoration(
-          color: colorScheme.tertiary,
+          color: AppColors.grayColor,
           borderRadius: BorderRadius.circular(10),
           // Border for selected items only
           border: isSelected ? Border.all(color: Colors.black, width: 2) : null,
@@ -59,11 +59,10 @@ class CompanyButton extends StatelessWidget {
               SizedBox(height: 8),
               Text(
                 title,
-                style: TextStyle(
+                style: theme.textTheme.bodyMedium?.copyWith(
                   fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: colorScheme.scrim,
-                  letterSpacing: 0
+                  color: AppColors.blackColor,
+                  letterSpacing: 0,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),

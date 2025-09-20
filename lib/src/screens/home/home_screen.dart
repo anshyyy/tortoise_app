@@ -9,14 +9,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tortoise'),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
       body: Center(
         child: MaterialButton(
           height: 50,
           minWidth: 200,
-          color: Theme.of(context).primaryColor,
+          color: Colors.blue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),

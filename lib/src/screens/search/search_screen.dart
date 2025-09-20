@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:textfield_tags/textfield_tags.dart';
+import 'package:tortoise/src/constants/app_colors.dart';
 import 'package:tortoise/src/constants/asset_constants.dart';
 import 'package:tortoise/src/data/company_data.dart';
 import 'package:tortoise/src/widgets/app_bar/k_app_bar.dart';
@@ -34,9 +35,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.secondary,
+      backgroundColor: AppColors.gray500,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -54,21 +54,19 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Padding(
               padding: EdgeInsets.only(right: 24),
               child: KTextFieldTags(
-                backgroundColor: colorScheme.secondaryContainer.withValues(
-                  alpha: 0.05,
-                ),
+                backgroundColor: AppColors.black500.withValues(alpha: 0.05),
                 width: 326,
                 height: 54,
-                borderColor: colorScheme.scrim,
+                borderColor: AppColors.blackColor,
                 borderWidth: 1,
                 tagDisplayMode: TagDisplayMode.horizontal,
                 prefixIconPath: AssetConstants.searchIcon,
                 tagBorderRadius: 8,
-                tagBackgroundColor: colorScheme.primary,
-                tagRemoveIconColor: colorScheme.scrim,
-                tagTextColor: colorScheme.scrim,
+                tagBackgroundColor: AppColors.blackColor,
+                tagRemoveIconColor: AppColors.blackColor,
+                tagTextColor: AppColors.blackColor,
 
-                prefixIconColor: colorScheme.scrim,
+                prefixIconColor: AppColors.blackColor,
                 controller: _controller,
                 initialTags: [],
                 tagPrefix: '',
@@ -89,11 +87,7 @@ class _SearchScreenState extends State<SearchScreen> {
               children: [
                 Text(
                   'Search from popular brands',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: colorScheme.scrim,
-                  ),
+                  style: theme.textTheme.headlineMedium?.copyWith(fontSize: 16),
                 ),
                 SizedBox(height: 24),
                 SizedBox(

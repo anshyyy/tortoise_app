@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:tortoise/src/constants/app_colors.dart';
 
 class AppTheme {
   AppTheme._();
 
-  static const Color primaryColor = Colors.blue;
-  static const Color scaffoldBackgroundColor = Colors.white;
-  static const Color accentColor = Color(0xfffafafa);
-  static const Color containerColor = Color(0xffeeeeee);
-  static const Color shippingBackgroundColor = Color(0xfff4f4ea);
-  static const Color shippingTextColor = Color(0xff946120);
-  static const Color textColor = Colors.black;
-  static const Color whiteColor = Color(0xffffffff);
-  static const Color grayColor = Color(0xff191919);
-
   static ThemeData get theme {
     return ThemeData(
       useMaterial3: true,
-      primaryColor: primaryColor,
-      scaffoldBackgroundColor: scaffoldBackgroundColor,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryColor,
-        brightness: Brightness.light,
-        primary: whiteColor,
-        secondary: accentColor,
-        secondaryContainer: grayColor,
-        tertiary: containerColor,
-        surface: shippingBackgroundColor,
-        surfaceTint: shippingTextColor,
-        onSurface: shippingTextColor,
-        scrim: textColor,
+      primaryColor: Colors.white,
+      scaffoldBackgroundColor: Colors.white,
+      textTheme: _buildTextTheme(),
+    );
+  }
+
+  static TextTheme _buildTextTheme() {
+    return const TextTheme(
+      // SemiBold styles (FontWeight.w600)
+      headlineMedium: TextStyle(
+        fontWeight: FontWeight.w600,
+        color: AppColors.blackColor,
+        fontSize: 20,
+      ),
+      // Medium styles (FontWeight.w500)
+      bodyMedium: TextStyle(
+        fontWeight: FontWeight.w500,
+        color: AppColors.blackColor,
+        fontSize: 16,
       ),
     );
   }
