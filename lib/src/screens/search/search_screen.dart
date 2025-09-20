@@ -18,7 +18,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   late StringTagController _controller;
-  int _selectedIndex = 0;
+  List<int> _selectedIndex = [];
 
   @override
   void initState() {
@@ -30,6 +30,21 @@ class _SearchScreenState extends State<SearchScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _handleCompanySelection(int index) {
+    final companyName = CompanyData.companyData[index].name;
+
+    // Check if tag already exists
+    final currentTags = _controller.getTags ?? [];
+    print('currentTags: $currentTags');
+    print('companyName: $companyName');
+    if (!currentTags.contains(companyName)) {
+      _controller.addTag(companyName);
+      setState(() {
+        _selectedIndex.add(index);
+      });
+    }
   }
 
   @override
@@ -57,13 +72,14 @@ class _SearchScreenState extends State<SearchScreen> {
                 backgroundColor: AppColors.black500.withValues(alpha: 0.05),
                 width: 326,
                 height: 54,
+                hintText: 'Search...',
                 borderColor: AppColors.blackColor,
                 borderWidth: 1,
                 tagDisplayMode: TagDisplayMode.horizontal,
                 prefixIconPath: AssetConstants.searchIcon,
                 tagBorderRadius: 8,
-                tagBackgroundColor: AppColors.blackColor,
-                tagRemoveIconColor: AppColors.blackColor,
+                tagBackgroundColor: AppColors.whiteColor,
+                tagRemoveIconColor: AppColors.black500,
                 tagTextColor: AppColors.blackColor,
 
                 prefixIconColor: AppColors.blackColor,
@@ -74,8 +90,24 @@ class _SearchScreenState extends State<SearchScreen> {
                 validator: (tag) {
                   return null;
                 },
-                onTagAdded: (tag) {},
-                onTagDeleted: (tag) {},
+                onTagAdded: (tag) {
+                  print('onTagAdded tag: $tag');
+                  _selectedIndex.add(
+                    CompanyData.companyData.indexWhere(
+                      (company) =>
+                          company.name.toLowerCase() == tag.toLowerCase(),
+                    ),
+                  );
+                  setState(() {});
+                },
+                onTagDeleted: (tag) {
+                  // When a company tag is deleted, update the selected index
+                  final companyIndex = CompanyData.companyData.indexWhere(
+                    (company) => company.name == tag,
+                  );
+                  _selectedIndex.remove(companyIndex);
+                  setState(() {});
+                },
               ),
             ),
           ),
@@ -102,14 +134,10 @@ class _SearchScreenState extends State<SearchScreen> {
                         padding: EdgeInsets.only(right: 16),
 
                         child: CompanyButton(
-                          onTap: () {
-                            setState(() {
-                              _selectedIndex = index;
-                            });
-                          },
+                          onTap: () => _handleCompanySelection(index),
                           image: CompanyData.companyData[index].image,
                           title: CompanyData.companyData[index].name,
-                          isSelected: index == _selectedIndex,
+                          isSelected: _selectedIndex.contains(index),
                         ),
                       );
                     },
