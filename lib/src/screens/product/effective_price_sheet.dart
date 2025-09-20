@@ -158,7 +158,9 @@ class EffectivePriceSheet extends StatelessWidget {
           ),
           SizedBox(height: 16),
           KPrimaryButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             text: 'Okay! got it',
           ),
           SizedBox(height: 16),
