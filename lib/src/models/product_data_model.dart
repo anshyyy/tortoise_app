@@ -1,3 +1,5 @@
+import 'package:tortoise/src/models/product_specification_model.dart';
+
 import 'color_variant_model.dart';
 
 class ProductDataModel {
@@ -9,7 +11,9 @@ class ProductDataModel {
   final double price; // Base product price
   final List<ColorVariantModel> colorVariants; // Different color options with their images
   final List<String> sizes; // Different sizes options with their images
-
+  final List<ProductSpecificationModel> specifications; // Different specifications options with their images
+  final String adImage;
+  
   ProductDataModel({
     required this.id, 
     required this.name, 
@@ -19,6 +23,8 @@ class ProductDataModel {
     required this.price,
     this.colorVariants = const [], // Default to empty list
     this.sizes = const [], // Default to empty list
+    this.specifications = const [], // Default to empty list
+    required this.adImage,
   });
 
   /// Create ProductDataModel from JSON (typically from API response)
@@ -40,6 +46,12 @@ class ProductDataModel {
               .map((size) => size as String)
               .toList()
           : [],
+      specifications: json['specifications'] != null
+          ? (json['specifications'] as List)
+              .map((specification) => ProductSpecificationModel.fromJson(specification as Map<String, dynamic>))
+              .toList()
+          : [],
+      adImage: json['ad_image'] as String,
     );
   }
 
@@ -54,6 +66,8 @@ class ProductDataModel {
       'price': price,
       'color_variants': colorVariants.map((variant) => variant.toJson()).toList(),
       'sizes': sizes,
+      'specifications': specifications.map((specification) => specification.toJson()).toList(),
+      'ad_image': adImage,
     };
   }
 
@@ -67,6 +81,8 @@ class ProductDataModel {
     double? price,
     List<ColorVariantModel>? colorVariants,
     List<String>? sizes,
+    List<ProductSpecificationModel>? specifications,
+    String? adImage,
   }) {
     return ProductDataModel(
       id: id ?? this.id,
@@ -77,6 +93,8 @@ class ProductDataModel {
       price: price ?? this.price,
       colorVariants: colorVariants ?? this.colorVariants,
       sizes: sizes ?? this.sizes,
+      specifications: specifications ?? this.specifications,
+      adImage: adImage ?? this.adImage,
     );
   }
 
@@ -96,11 +114,13 @@ class ProductDataModel {
         other.category == category &&
         other.price == price &&
         other.colorVariants.length == colorVariants.length &&
-        other.sizes.length == sizes.length;
+        other.sizes.length == sizes.length &&
+        other.specifications.length == specifications.length &&
+        other.adImage == adImage;
   }
 
   @override
   int get hashCode {
-    return Object.hash(id, name, image, companyId, category, price, colorVariants.length, sizes.length);
+    return Object.hash(id, name, image, companyId, category, price, colorVariants.length, sizes.length, specifications.length, adImage);
   }
 }

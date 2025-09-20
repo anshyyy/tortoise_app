@@ -16,6 +16,10 @@ class AssetConstants {
   static const String shieldIcon = '${_vectorFolder}shield.svg';
   static const String checkIcon = '${_vectorFolder}select.svg';
   static const String uncheckedIcon = '${_vectorFolder}un_select.svg';
+  static const String caretDownIcon = '${_vectorFolder}caret_circle_down.svg';
+  static const String caretUpIcon = '${_vectorFolder}caret_circle_up.svg';
+  static const String caretRightIcon = '${_vectorFolder}caret_circle_right.svg';
+
 
   // Image assets - Device images
   static const String ipadPro = '${_imageFolder}ipad_pro.png';

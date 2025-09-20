@@ -4,6 +4,7 @@ class AppColors {
   AppColors._();
   static const Color whiteColor = Color(0xffFFFFFF);
   static const Color blackColor = Color(0xff000000);
+  static const Color black400 = Color(0xff646464);
   static const Color black500 = Color(0xff191919);
   static const Color grayColor = Color(0xffEEEEEE);
   static const Color gray500 = Color(0xffFAFAFA);
@@ -16,4 +17,6 @@ class AppColors {
   static const Color green500 = Color(0xff16AFBE);
   static const Color green300 = Color(0xff167e62);
   static const Color green100 = Color(0xffA4F6B5);
+  static const Color dividerColor = Color(0xffE1E1E1);
+
 }

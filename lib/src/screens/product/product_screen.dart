@@ -6,8 +6,10 @@ import 'package:tortoise/src/models/product_data_model.dart';
 import 'package:tortoise/src/widgets/app_bar/k_app_bar.dart';
 import 'package:tortoise/src/widgets/buttons/svg_icon_button.dart';
 import 'package:tortoise/src/widgets/carousel/k_carousel.dart';
+import 'package:tortoise/src/widgets/misc/add_box.dart';
 import 'package:tortoise/src/widgets/misc/k_color_box.dart';
 import 'package:tortoise/src/widgets/misc/k_size_box.dart';
+import 'package:tortoise/src/widgets/misc/specifications_box.dart';
 import 'package:tortoise/src/widgets/tile/k_tile.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -278,9 +280,14 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                   ),
                   SizedBox(height: 8),
+                  SpecificationsBox(
+                    specifications: widget.product.specifications,
+                  ),
                 ],
               ),
             ),
+            SizedBox(height: 16),
+            AddBox(imagePath: widget.product.adImage),
           ],
         ),
       ),
