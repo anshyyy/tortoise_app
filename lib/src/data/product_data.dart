@@ -91,117 +91,19 @@ class ProductData {
   static final List<ProductDataModel> googleProducts = [
     ProductDataModel(
       id: 'google_1',
-      name: 'Pixel 8 Pro',
-      image: 'assets/images/google.png',
+      name: 'Pixel 9 Pro',
+      image: 'assets/images/pixel9.png',
       companyId: '2', // Google
       category: 'Phone',
       price: 999.00,
-    ),
-    ProductDataModel(
-      id: 'google_2',
-      name: 'Pixel 8',
-      image: 'assets/images/google.png',
-      companyId: '2', // Google
-      category: 'Phone',
-      price: 699.00,
-    ),
-    ProductDataModel(
-      id: 'google_3',
-      name: 'Pixel 7a',
-      image: 'assets/images/google.png',
-      companyId: '2', // Google
-      category: 'Phone',
-      price: 499.00,
-    ),
-    ProductDataModel(
-      id: 'google_4',
-      name: 'Pixel Tablet',
-      image: 'assets/images/google.png',
-      companyId: '2', // Google
-      category: 'Tablet',
-      price: 499.00,
-    ),
-    ProductDataModel(
-      id: 'google_5',
-      name: 'Pixelbook Go',
-      image: 'assets/images/google.png',
-      companyId: '2', // Google
-      category: 'Laptop',
-      price: 649.00,
     ),
   ];
 
   // Samsung Products
-  static final List<ProductDataModel> samsungProducts = [
-    ProductDataModel(
-      id: 'samsung_1',
-      name: 'Galaxy S24 Ultra',
-      image: 'assets/images/samsung.png',
-      companyId: '3', // Samsung
-      category: 'Phone',
-      price: 1299.00,
-    ),
-    ProductDataModel(
-      id: 'samsung_2',
-      name: 'Galaxy S24+',
-      image: 'assets/images/samsung.png',
-      companyId: '3', // Samsung
-      category: 'Phone',
-      price: 999.00,
-    ),
-    ProductDataModel(
-      id: 'samsung_3',
-      name: 'Galaxy S24',
-      image: 'assets/images/samsung.png',
-      companyId: '3', // Samsung
-      category: 'Phone',
-      price: 799.00,
-    ),
-    ProductDataModel(
-      id: 'samsung_4',
-      name: 'Galaxy Tab S9',
-      image: 'assets/images/samsung.png',
-      companyId: '3', // Samsung
-      category: 'Tablet',
-      price: 799.00,
-    ),
-    ProductDataModel(
-      id: 'samsung_5',
-      name: 'Galaxy Book4 Pro',
-      image: 'assets/images/samsung.png',
-      companyId: '3', // Samsung
-      category: 'Laptop',
-      price: 1299.00,
-    ),
-  ];
+  static final List<ProductDataModel> samsungProducts = [];
 
   // OnePlus Products
-  static final List<ProductDataModel> oneplusProducts = [
-    ProductDataModel(
-      id: 'oneplus_1',
-      name: 'OnePlus 12',
-      image: 'assets/images/oneplus.png',
-      companyId: '4', // OnePlus
-      category: 'Phone',
-      price: 799.00,
-    ),
-    ProductDataModel(
-      id: 'oneplus_2',
-      name: 'OnePlus 12R',
-      image: 'assets/images/oneplus.png',
-      companyId: '4', // OnePlus
-      category: 'Phone',
-      price: 599.00,
-    ),
-    ProductDataModel(
-      id: 'oneplus_3',
-      name: 'OnePlus Pad',
-      image: 'assets/images/oneplus.png',
-      companyId: '4', // OnePlus
-      category: 'Tablet',
-      price: 479.00,
-    ),
-  ];
+  static final List<ProductDataModel> oneplusProducts = [];
 
   // Combined list of all products
   static List<ProductDataModel> get allProducts => [
