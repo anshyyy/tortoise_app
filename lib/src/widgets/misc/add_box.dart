@@ -64,8 +64,6 @@ class _AddBoxState extends State<AddBox> {
             ),
           ),
           
-          const SizedBox(height: 16),
-          
           // More details toggle button
           GestureDetector(
             onTap: () {
@@ -74,12 +72,15 @@ class _AddBoxState extends State<AddBox> {
               });
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              decoration: BoxDecoration(
+               border: Border.all(color: AppColors.gray500, width: 1),
+              ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    _isExpanded ? 'Show Less' : 'More details',
+                    _isExpanded ? 'Show Less' : 'View More',
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: AppColors.green300,
                       fontSize: 13,

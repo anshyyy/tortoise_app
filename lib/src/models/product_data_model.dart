@@ -9,6 +9,9 @@ class ProductDataModel {
   final String companyId; // Links product to company
   final String category; // e.g., 'Phone', 'Laptop', 'Tablet'
   final double price; // Base product price
+  final double effectivePrice;
+  final double monthlyDeduction;
+  
   final List<ColorVariantModel> colorVariants; // Different color options with their images
   final List<String> sizes; // Different sizes options with their images
   final List<ProductSpecificationModel> specifications; // Different specifications options with their images
@@ -25,6 +28,8 @@ class ProductDataModel {
     this.sizes = const [], // Default to empty list
     this.specifications = const [], // Default to empty list
     required this.adImage,
+    required this.effectivePrice,
+    required this.monthlyDeduction,
   });
 
   /// Create ProductDataModel from JSON (typically from API response)
@@ -36,6 +41,8 @@ class ProductDataModel {
       companyId: json['company_id'] as String,
       category: json['category'] as String,
       price: (json['price'] as num).toDouble(),
+      effectivePrice: (json['effective_price'] as num).toDouble(),
+      monthlyDeduction: (json['monthly_deduction'] as num).toDouble(),
       colorVariants: json['color_variants'] != null
           ? (json['color_variants'] as List)
               .map((variant) => ColorVariantModel.fromJson(variant as Map<String, dynamic>))
@@ -64,6 +71,8 @@ class ProductDataModel {
       'company_id': companyId,
       'category': category,
       'price': price,
+      'effective_price': effectivePrice,
+      'monthly_deduction': monthlyDeduction,
       'color_variants': colorVariants.map((variant) => variant.toJson()).toList(),
       'sizes': sizes,
       'specifications': specifications.map((specification) => specification.toJson()).toList(),
@@ -79,6 +88,8 @@ class ProductDataModel {
     String? companyId,
     String? category,
     double? price,
+    double? effectivePrice,
+    double? monthlyDeduction,
     List<ColorVariantModel>? colorVariants,
     List<String>? sizes,
     List<ProductSpecificationModel>? specifications,
@@ -91,6 +102,8 @@ class ProductDataModel {
       companyId: companyId ?? this.companyId,
       category: category ?? this.category,
       price: price ?? this.price,
+      effectivePrice: effectivePrice ?? this.effectivePrice,
+      monthlyDeduction: monthlyDeduction ?? this.monthlyDeduction,
       colorVariants: colorVariants ?? this.colorVariants,
       sizes: sizes ?? this.sizes,
       specifications: specifications ?? this.specifications,

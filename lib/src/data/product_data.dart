@@ -14,7 +14,9 @@ class ProductData {
       image: 'assets/images/iphone_17_pro.png',
       companyId: '1', // Apple
       category: 'Phone',
-      price: 999.00,
+      price: 82999.00,
+      effectivePrice: 74699.00,
+      monthlyDeduction: 2075.00,
       adImage: 'assets/images/iphone_ad.png',
       sizes: ['128 GB', '256 GB', '512 GB', '1 TB'],
       colorVariants: [
@@ -94,7 +96,9 @@ class ProductData {
       companyId: '1', // Apple
       category: 'Phone',
       adImage: 'assets/images/iphone_ad.png',
-      price: 999.00,
+      price: 82999.00,
+      effectivePrice: 74699.00,
+      monthlyDeduction: 2075.00,
       sizes: ['128 GB', '256 GB', '512 GB'],
       colorVariants: [
         ColorVariantModel(
@@ -169,7 +173,9 @@ class ProductData {
       adImage: 'assets/images/iphone_ad.png',
       companyId: '1', // Apple
       category: 'Phone',
-      price: 1199.00,
+      price: 99517.00,
+      effectivePrice: 89565.00,
+      monthlyDeduction: 2488.00,
       sizes: ['128 GB', '256 GB', '512 GB'],
       colorVariants: [
         ColorVariantModel(
@@ -244,7 +250,9 @@ class ProductData {
       companyId: '1', // Apple
       category: 'Phone',
       adImage: 'assets/images/iphone_ad.png',
-      price: 799.00,
+      price: 66317.00,
+      effectivePrice: 59685.00,
+      monthlyDeduction: 1658.00,
       sizes: ['128 GB', '256 GB', '512 GB'],
       colorVariants: [
         ColorVariantModel(
@@ -328,7 +336,9 @@ class ProductData {
       companyId: '1', // Apple
       category: 'Phone',
       adImage: 'assets/images/iphone_ad.png',
-      price: 899.00,
+      price: 74617.00,
+      effectivePrice: 67155.00,
+      monthlyDeduction: 1865.00,
       sizes: ['128 GB', '256 GB', '512 GB'],
       specifications: [
         ProductSpecificationModel(
@@ -365,7 +375,9 @@ class ProductData {
       companyId: '1', // Apple
       adImage: 'assets/images/iphone_ad.png',
       category: 'Phone',
-      price: 699.00,
+      price: 58017.00,
+      effectivePrice: 52215.00,
+      monthlyDeduction: 1450.00,
       sizes: ['128 GB', '256 GB', '512 GB'],
       specifications: [
         ProductSpecificationModel(
@@ -402,7 +414,9 @@ class ProductData {
       adImage: 'assets/images/iphone_ad.png',
       companyId: '1', // Apple
       category: 'Phone',
-      price: 799.00,
+      price: 66317.00,
+      effectivePrice: 59685.00,
+      monthlyDeduction: 1658.00,
       sizes: ['128 GB', '256 GB', '512 GB'],
       specifications: [
         ProductSpecificationModel(
@@ -439,7 +453,9 @@ class ProductData {
       adImage: 'assets/images/iphone_ad.png',
       companyId: '1', // Apple
       category: 'Tablet',
-      price: 799.00,
+      price: 66317.00,
+      effectivePrice: 59685.00,
+      monthlyDeduction: 1658.00,
       specifications: [
         ProductSpecificationModel(
           title: 'Display',
@@ -475,7 +491,9 @@ class ProductData {
       image: 'assets/images/ipad.png',
       companyId: '1', // Apple
       category: 'Tablet',
-      price: 449.00,
+      price: 37267.00,
+      effectivePrice: 33540.00,
+      monthlyDeduction: 932.00,
       specifications: [
         ProductSpecificationModel(
           title: 'Display',
@@ -511,7 +529,9 @@ class ProductData {
       adImage: 'assets/images/iphone_ad.png',
       companyId: '1', // Apple
       category: 'Laptop',
-      price: 999.00,
+      price: 82999.00,
+      effectivePrice: 74699.00,
+      monthlyDeduction: 2075.00,
       specifications: [
         ProductSpecificationModel(
           title: 'Display',
@@ -547,7 +567,9 @@ class ProductData {
       image: 'assets/images/macbook.png',
       companyId: '1', // Apple
       category: 'Laptop',
-      price: 1599.00,
+      price: 132717.00,
+      effectivePrice: 119445.00,
+      monthlyDeduction: 3318.00,
       specifications: [
         ProductSpecificationModel(
           title: 'Display',
@@ -587,7 +609,9 @@ class ProductData {
       image: 'assets/images/pixel9.png',
       companyId: '2', // Google
       category: 'Phone',
-      price: 999.00,
+      price: 82999.00,
+      effectivePrice: 74699.00,
+      monthlyDeduction: 2075.00,
       colorVariants: [
         ColorVariantModel(
           colorName: 'Obsidian',

@@ -4,6 +4,7 @@ import 'package:tortoise/src/constants/app_colors.dart';
 import 'package:tortoise/src/constants/asset_constants.dart';
 import 'package:tortoise/src/models/product_data_model.dart';
 import 'package:tortoise/src/widgets/app_bar/k_app_bar.dart';
+import 'package:tortoise/src/widgets/bottom_nav/bottom_nav.dart';
 import 'package:tortoise/src/widgets/buttons/svg_icon_button.dart';
 import 'package:tortoise/src/widgets/carousel/k_carousel.dart';
 import 'package:tortoise/src/widgets/misc/add_box.dart';
@@ -29,6 +30,13 @@ class _ProductScreenState extends State<ProductScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      bottomNavigationBar: BottomNav(
+        totalPrice: widget.product.price,
+        effectivePrice: widget.product.effectivePrice,
+        monthlyDeduction: widget.product.monthlyDeduction,
+        onAddToCart: () {},
+        onEffectivePrice: () {},
+      ),
       backgroundColor: AppColors.gray500,
       appBar: KAppBar(
         title: Text(
@@ -288,6 +296,7 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
             SizedBox(height: 16),
             AddBox(imagePath: widget.product.adImage),
+            SizedBox(height: 100),
           ],
         ),
       ),
